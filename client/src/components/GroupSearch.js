@@ -28,15 +28,6 @@ const GroupSearch = (props) => {
         <div className="group-search-container">
             <h2>Group Search</h2>
             <form>
-                <h4>Group Size</h4>
-                <label for="group-size" name="group-size" ></label>
-                <select name="group-size" id="group-size">
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
-                <h4>Group Name</h4>
                 <label for="group-search"></label>
                 <input  placeholder="Enter group name..."
                         type="text"
