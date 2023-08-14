@@ -12,3 +12,30 @@
   -moz-tab-size: 4;
   tab-size: 4;
 }
+
+.page-wrap {
+  background: url(https://www.runescape.com/img/rsp777/bg2.jpg) repeat-y center top;
+  background-color:black;
+  height: 100vh;
+  color: white;
+  display: flex;
+  align-items: center;
+}
+.home-page-container {
+  height: 100vh;
+  color: white;
+  max-width: 815px;
+  margin-top: 40px;
+  margin: 0 auto;
+}
+.home-page-container h1 {
+  font-size: 3rem;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+.group-search-container form {
+  width: 60%;
+  margin: 0 auto;
+  margin-bottom: 40px;
+}
