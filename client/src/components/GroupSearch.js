@@ -13,9 +13,18 @@ const GroupSearch = (props) => {
     //     console.log(json)
     // }
 
+    //---FOR GROUP-------------------------
+    const getGroup = async () => {
+        const data = await fetch(`/api/v1/group/${searchTerm}`)
+        const json = await data.json()
+        console.log(json)
+        //should return an array of all player names in the group
+    }
+
     const handleSearch = (event) => {
         event.preventDefault();
         //getUserLog(searchTerm);
+        getGroup();
     }
 
     const handleChange = (event) => {
@@ -28,7 +37,7 @@ const GroupSearch = (props) => {
         <div className="group-search-container">
             <h2>Group Search</h2>
             <form>
-                <label for="group-search"></label>
+                <label htmlFor="group-search"></label>
                 <input  placeholder="Enter group name..."
                         type="text"
                         id="group-search"
