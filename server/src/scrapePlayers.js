@@ -3,7 +3,6 @@
 
 import cheerio from 'cheerio';
 import axios from 'axios';
- 
 
 // pass group name as param to the back end route  api/vi/group/:groupName
 // scrapeplayers(req.params.groupName)
