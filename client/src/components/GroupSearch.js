@@ -42,6 +42,9 @@ const GroupSearch = (props) => {
         <div className="group-search-container">
             <h2>Group Search</h2>
             <form>
+                <label style={{color: "white"}} htmlFor="group-type">Hardcore status: 
+                <input type="radio" name="group-type" />
+                </label>
                 <label htmlFor="group-search"></label>
                 <input  placeholder="Enter group name..."
                         type="text"
