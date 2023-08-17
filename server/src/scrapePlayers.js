@@ -1,13 +1,7 @@
-// const cheerio = require('cheerio');
-// const axios = require('axios');
 
 import cheerio from 'cheerio';
 import axios from 'axios';
 
-// pass group name as param to the back end route  api/vi/group/:groupName
-// scrapeplayers(req.params.groupName)
-// just return data or error 
-// handles respnse in the router 
 const scrapePlayers = async (groupName) => {
     const url = `https://secure.runescape.com/m=hiscore_oldschool_ironman/group-ironman/view-group?name=${groupName}`
     try {
