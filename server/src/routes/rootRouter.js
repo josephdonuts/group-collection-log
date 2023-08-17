@@ -13,4 +13,5 @@ rootRouter.use("/api/v1/users", usersRouter);
 //place your server-side routes here
 rootRouter.use("/api/v1/log", collectionLogRouter);
 rootRouter.use("/api/v1/group", groupSearchRouter);
+
 export default rootRouter;
