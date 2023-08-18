@@ -6,7 +6,6 @@ const scrapePlayers = async (groupName) => {
     const url = `https://secure.runescape.com/m=hiscore_oldschool_ironman/group-ironman/view-group?name=${groupName}`
     try {
         const { data } = await axios.get(url);
-        console.log(data)
         const $ = cheerio.load(data);
         const table = $('table').eq(0).find('tbody').find('tr').find('td').find('a');
         const players = [];

@@ -1,7 +1,7 @@
-import Express from "express";
+import Express, { response } from "express";
 import scrapePlayers from "../../../scrapePlayers.js";
 import LogCombiner from "../../../LogCombiner.js";
-import got from "got";
+import axios from "axios";
 
 const groupSearchRouter = new Express.Router();
 const baseURL = "https://api.collectionlog.net/collectionlog/user/"
@@ -10,13 +10,18 @@ groupSearchRouter.get("/:groupName", async (req, res) => {
     const logs = [];
     try {
         const players = await scrapePlayers(req.params.groupName);
-        console.log(players);
         for (const player of players) {
             console.log(player);
-            const log = await got(`${baseURL}${player}`);
-            const parsedLog = JSON.parse(log.body);
-            logs.push(parsedLog);
-        }
+            try {
+                const response = await axios.get(`${baseURL}${player}`)
+                    if (response.status === 200) {
+                        logs.push(response.data);
+                    }
+                } catch (error) {
+                    if (!axios.isAxiosError(error)) //let axios blow up haha
+                        throw error
+                }
+        }  
         console.log(logs)
         const logCombiner = new LogCombiner(logs);
         logCombiner.combine();

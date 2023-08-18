@@ -9,24 +9,22 @@ class LogCombiner {
     combine() {
         this.logs.forEach(log => {
             for (const tab in log.collectionLog.tabs) {
-                console.log("---- TAB NAME ----", tab)
                 for (const entry in log.collectionLog.tabs[tab]) {
-                    console.log("  --  ", entry)
+                    if(log.collectionLog.tabs[tab][entry].killCount)
+                        //if it has a killCount property, add it to the killCount property of the groupedLog
+                        this.groupedLog[tab][entry].killCount += log.collectionLog.tabs[tab][entry].killCount[0].amount;
                     if (!this.groupedLog[tab][entry])
                         this.groupedLog[tab][entry] = log.collectionLog.tabs[tab][entry];
-                    else {
-                        //this.groupedLog[tab][entry].killCount += log.collectionLog.tabs[tab][entry].killCount.amount;
+                    else 
                         if (this.groupedLog[tab][entry].items.length === 0)
                             this.groupedLog[tab][entry].items.push(...log.collectionLog.tabs[tab][entry].items);
                         else {
-                            this.groupedLog[tab][entry].items.forEach((item, index) => {
-                                console.log("item", item)
-                                if (item.name === this.groupedLog[tab][entry].items[index].name)
-                                    item.amount += this.groupedLog[tab][entry].items[index].quantity;
-                                else
-                                    this.groupedLog[tab][entry].items.push(log.collectionLog.tabs[tab][entry].items[index]);
-                            })
-                        }
+                            log.collectionLog.tabs[tab][entry].items.forEach((item, index) => {
+                                if ( this.groupedLog[tab][entry].items[index] )
+                                    this.groupedLog[tab][entry].items[index].quantity += item.quantity;
+                                 else 
+                                    this.groupedLog[tab][entry].items.push(item);
+                        })
                     }
                 }
             }
