@@ -24,7 +24,7 @@ groupSearchRouter.get("/:groupName", async (req, res) => {
         }  
         const logCombiner = new LogCombiner(logs);
         logCombiner.combine();
-        res.status(200).json(logCombiner.groupedLog);
+        res.status(200).json(logCombiner);
     } catch (error) {
         console.error(error);
         res.status(500).json({ errors: error });
