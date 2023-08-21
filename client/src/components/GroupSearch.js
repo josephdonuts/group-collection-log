@@ -6,20 +6,13 @@ const GroupSearch = (props) => {
     const [searchTerm, setSearchTerm] = useState("");
 
     const [group, setGroup] = useState([]);
-    let searchTile;
-    //---FOR SINGLE USER LOG-------------------------
-    // const getUserLog = async (username) => {
-    //     const data = await fetch(`/api/v1/log/${username}`)
-    //     const json = await data.json()
-    //     console.log(json)
-    // }
+//    let searchTile;
 
-    //---FOR GROUP-------------------------
     const getGroup = async () => {
         const response = await fetch(`/api/v1/group/${searchTerm}`)
-        const playerNames = await response.json()
-        console.log(playerNames)
-        setGroup(playerNames)
+        const responseData = await response.json()
+        console.log(responseData)
+        //setGroup(playerNames)
     }
 
     const handleSearch = (event) => {
@@ -31,11 +24,11 @@ const GroupSearch = (props) => {
         setSearchTerm(event.target.value);
     }
 
-    if(group.length === 0) {
-        searchTile = <p>Group not found</p>
-    } else {
-        searchTile = <SearchTile name={searchTerm} players={group.map(player => { return ` ${player} ` })} />
-    }
+    // if(group.length === 0) {
+    //     searchTile = <p>Group not found</p>
+    // } else {
+    //     searchTile = <SearchTile name={searchTerm} players={group.map(player => { return ` ${player} ` })} />
+    // }
 
     return (
         <div className="group-search-container">
@@ -52,7 +45,7 @@ const GroupSearch = (props) => {
                         onChange={handleChange} />
                 <input type="button" value="Search" onClick={handleSearch} />
             </form>
-            {searchTile}
+            {/* {searchTile} */}
         </div>
     )
 }
