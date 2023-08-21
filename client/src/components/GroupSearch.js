@@ -1,41 +1,26 @@
 import React, {useState} from "react";
-import SearchTile from "./SearchTile";
+import { Link } from "react-router-dom";
+import CollectionLog from "./CollectionLog";
 
 const GroupSearch = (props) => {
 
     const [searchTerm, setSearchTerm] = useState("");
 
-    const [group, setGroup] = useState([]);
-//    let searchTile;
-
-    const getGroup = async () => {
-        const response = await fetch(`/api/v1/group/${searchTerm}`)
-        const responseData = await response.json()
-        console.log(responseData)
-        //setGroup(playerNames)
-    }
-
-    const handleSearch = (event) => {
-        event.preventDefault();
-        getGroup();
-    }
-
     const handleChange = (event) => {
         setSearchTerm(event.target.value);
     }
-
-    // if(group.length === 0) {
-    //     searchTile = <p>Group not found</p>
-    // } else {
-    //     searchTile = <SearchTile name={searchTerm} players={group.map(player => { return ` ${player} ` })} />
-    // }
 
     return (
         <div className="group-search-container">
             <h2>Group Search</h2>
             <form>
-                <label style={{color: "white"}} htmlFor="group-type">Hardcore status: 
-                <input type="radio" name="group-type" />
+                <label style={{color: "white"}} htmlFor="group-type" >Hardcore status: 
+                <div class="switch-field">
+                    <input type="radio" id="radio-one" name="switch-one" value={true} />
+                    <label for="radio-one">Yes</label>
+                    <input type="radio" id="radio-two" name="switch-one" value={false} checked />
+                    <label for="radio-two">No</label>
+	            </div>
                 </label>
                 <label htmlFor="group-search"></label>
                 <input  placeholder="Enter group name..."
@@ -43,9 +28,11 @@ const GroupSearch = (props) => {
                         id="group-search"
                         name="group-search"
                         onChange={handleChange} />
-                <input type="button" value="Search" onClick={handleSearch} />
+                <Link to={`/group/log/${searchTerm}`}>
+                    <p>Search</p>
+                </Link>
             </form>
-            {/* {searchTile} */}
+            {/* {searchTile} ??? */}
         </div>
     )
 }
