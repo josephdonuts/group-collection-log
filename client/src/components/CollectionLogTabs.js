@@ -2,14 +2,16 @@ import React from "react";
 import CollectionLogTab from "./CollectionLogTab";
 
 const CollectionLogTabs = (props) => {
-    const { currentTab, setCurrentTab } = props;
+    const { setCurrentEntry, currentTab, setCurrentTab, collectionLog } = props;
     const tabs = ["Bosses", "Raids", "Clues", "Minigames", "Other"]
     const tabComponents = tabs.map(tab => {
         return (
             <CollectionLogTab 
             tabName={tab}
             currentTab={currentTab} 
-            setCurrentTab={setCurrentTab} />
+            setCurrentTab={setCurrentTab}
+            setCurrentEntry={setCurrentEntry}
+            collectionLog={collectionLog} />
         )
     })
     return (

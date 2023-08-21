@@ -7,7 +7,8 @@ const CollectionLog = (props) => {
 
 const [collectionLog, setCollectionLog] = useState({});
 const [currentTab, setCurrentTab] = useState("Bosses");
-    console.log(currentTab)
+const [currentEntry, setCurrentEntry] = useState("Abyssal Sire");
+console.log(currentEntry)
 const searchTerm = props.match.params.groupName
 
 const getGroup = async () => {
@@ -27,14 +28,19 @@ useEffect(() => {
                     <h2>{`${searchTerm}`} Collection Log</h2>
                     <CollectionLogTabs
                     currentTab={currentTab}
-                    setCurrentTab={setCurrentTab} />
+                    setCurrentTab={setCurrentTab}
+                    setCurrentEntry={setCurrentEntry}
+                    collectionLog={collectionLog} />
                     <div className="collection-log-tab-content">
                         <CollectionLogEntryList
                         collectionLog={collectionLog}
-                        currentTab={currentTab} />
+                        currentTab={currentTab}
+                        setCurrentEntry={setCurrentEntry} />
 
                         <CollectionLogItemList
-                        collectionLog={collectionLog} />
+                        collectionLog={collectionLog}
+                        currentTab={currentTab}
+                        currentEntry={currentEntry} />
                     </div>
                 </div>
             </div>

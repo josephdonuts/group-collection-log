@@ -1,9 +1,14 @@
 import React from "react";
 
 const CollectionLogEntry = (props) => {
-    const { entry } = props;
+    const { setCurrentEntry, entry } = props;
+
+    const handleClick = () => {
+        setCurrentEntry(entry)
+    }
+
     return (
-        <div>
+        <div className="entry-text" onClick={handleClick}>
             {entry}
         </div>
     )

@@ -16,7 +16,8 @@
 .page-wrap {
   background: url(https://www.runescape.com/img/rsp777/bg2.jpg) repeat-y center top;
   background-color:black;
-  height: 100vh;
+  min-height: 100vh;
+  max-height: 100%;
   color: white;
   display: flex;
   align-items: center;
@@ -98,11 +99,28 @@
   font-size: 1.5rem;
   border: white 1px solid;
 }
-.collection-log-entry {
+.collection-log-entry-list {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-grow: 1;
+  text-align: left;
+  max-height: 100%;
   color: white;
   font-size: 1.5rem;
+  border: white 1px solid;
+}
+.entry-text {
+  color: white;
+  font-size: 1rem;
+  margin-left: 5px;
+}
+.entry-text:hover {
+  cursor: pointer;
+  color: gold
+}
+.item-tile {
+  display: flex;
+  flex-direction: column;
+  font-size: 1rem;
   border: white 1px solid;
 }
