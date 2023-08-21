@@ -6,7 +6,8 @@ const CollectionLogItemList = (props) => {
     const itemList = collectionLog[currentTab][currentEntry].items.map(item => {
         return (
             <Item 
-            item={item} />
+            item={item}
+            key={item.id} />
         )
     })
     return (

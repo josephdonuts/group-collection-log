@@ -7,6 +7,7 @@ const CollectionLogEntryList = (props) => {
     const entries = Object.keys(collectionLog[currentTab]).map(entry => {
         return (
             <CollectionLogEntry 
+            key={entry}
             entry={entry}
             setCurrentEntry={setCurrentEntry} />
         )

@@ -8,6 +8,7 @@ const CollectionLogTabs = (props) => {
         return (
             <CollectionLogTab 
             tabName={tab}
+            key={tab}
             currentTab={currentTab} 
             setCurrentTab={setCurrentTab}
             setCurrentEntry={setCurrentEntry}
