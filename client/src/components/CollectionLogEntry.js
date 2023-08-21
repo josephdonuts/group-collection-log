@@ -1,9 +1,10 @@
 import React from "react";
 
 const CollectionLogEntry = (props) => {
+    const { entry } = props;
     return (
-        <div className="collection-log-entry">
-            <h3>collection log entry</h3>
+        <div>
+            {entry}
         </div>
     )
 }

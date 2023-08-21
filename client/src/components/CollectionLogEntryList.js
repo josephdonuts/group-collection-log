@@ -1,9 +1,18 @@
 import React from "react";
+import CollectionLogEntry from "./CollectionLogEntry";
 
 const CollectionLogEntryList = (props) => {
+    const { currentTab, collectionLog } = props;
+
+    const entries = Object.keys(collectionLog[currentTab]).map(entry => {
+        return (
+            <CollectionLogEntry 
+            entry={entry} />
+        )
+    })
     return (
-        <div className="collection-log-entry-list">
-            <h3>collection log entry list</h3>
+        <div className="collection-log-item-list">
+            {entries}
         </div>
     )
 }
