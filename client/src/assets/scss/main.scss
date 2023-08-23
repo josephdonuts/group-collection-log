@@ -12,7 +12,16 @@
   -moz-tab-size: 4;
   tab-size: 4;
 }
-
+.top-bar {
+  a {
+    color: white;
+  }
+  color: white;
+  background-color: #1e1e1e;
+  .menu {
+    background-color: #1e1e1e;
+  }
+}
 .page-wrap {
   background: url(https://www.runescape.com/img/rsp777/bg2.jpg) repeat-y center top;
   background-color:black;
@@ -46,34 +55,33 @@
 }
 
 .collection-log-container {
-  max-width: 1100px;
+  min-width: 780px;
+  max-width: 780px;
   margin: 0 auto;
   margin-top: 40px;
   margin-bottom: 40px;
-}
-.collection-log-menu {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   text-align: center;
-  border: white 1px solid;
+}
+.prestige-icon {
+  max-width: 1em;
+  max-height: 1em;
+  margin-right: 5px;
+  margin-bottom: 10px;
 }
 .collection-log-tabs {
-  display: flex;
-  flex-direction: row;
-  flex-grow: 1;
+  display: inline-grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 10px;
   width: 100%;
   text-align: center;
   color: white;
-  border: white 1px solid;
 }
 .collection-log-tab {
-  flex-grow: 1;
   color: white;
   font-size: 1.5rem;
   border: white 1px solid;
   text-align: center;
+  background-color: rgb(92, 65, 33)
 }
 .collection-log-tab:hover {
   cursor: pointer;
@@ -85,42 +93,69 @@
 .collection-log-tab-content {
   display: flex;
   flex-direction: row;
-  flex-grow: 1;
+  width: 100%;
   color: white;
   font-size: 1.5rem;
+  margin-top: 10px;
   border: white 1px solid;
+  border-radius: 5px;
 }
-.collection-log-item-list {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  width: 28%;
-  color: white;
-  font-size: 1.5rem;
-  border: white 1px solid;
+.collection-log-menu {
+  h2 {
+    white-space: nowrap;
+    width: 100%;
+    font-size: 2rem;
+  }
 }
 .collection-log-entry-list {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
+  margin-top: 10px;
   text-align: left;
-  max-height: 100%;
-  color: white;
-  font-size: 1.5rem;
-  border: white 1px solid;
+  height: 400px;
+  width: 300px;
+  overflow-y: scroll;
 }
 .entry-text {
   color: white;
   font-size: 1rem;
-  margin-left: 5px;
+  margin-left: 10px;
 }
 .entry-text:hover {
   cursor: pointer;
   color: gold
 }
+.collection-log-item-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 400px;
+  overflow-y: scroll;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 .item-tile {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  margin: 5px;
+  color: white;
   font-size: 1rem;
-  border: white 1px solid;
+}
+
+.item-icon {
+  width:80%;
+  margin: 5px;
+  align-items: center;
+  justify-content: center;
+}
+.item-quantity-text {
+  color: gold;
+  font-size: 1.5rem;
+  margin-right: 10px;
+  margin-top: 10px;
+  width:100%;
+  text-align: right;
 }

@@ -8,15 +8,20 @@ const CollectionLog = (props) => {
 const [collectionLog, setCollectionLog] = useState({});
 const [currentTab, setCurrentTab] = useState("Bosses");
 const [currentEntry, setCurrentEntry] = useState("Abyssal Sire");
-console.log(currentEntry)
+
 const searchTerm = props.match.params.groupName
 
 const getGroup = async () => {
     const response = await fetch(`/api/v1/group/${searchTerm}`)
     const responseData = await response.json()
-        console.log(responseData)
-    setCollectionLog(responseData.groupedLog.collectionLog.tabs)
+        console.log(responseData)           // CONSOLE LOG CONSOLE LOG CONSOLE LOG CONSOLE LOG CONSOLE LOG CONSOLE LOG
+    setCollectionLog({
+        ...responseData.groupedLog.collectionLog.tabs,
+        uniques: responseData.uniqueItems,
+        prestige: responseData.prestige
+    })
 }
+
 useEffect(() => {
     getGroup()
 }, [])
@@ -25,12 +30,18 @@ useEffect(() => {
         return (
             <div className="collection-log-container">
                 <div className="collection-log-menu">
-                    <h2>{`${searchTerm}`} Collection Log</h2>
+                    <h2>
+                        {collectionLog.prestige && <img className='prestige-icon' src='https://www.runescape.com/img/rsp777/hiscores/prestige_icon.svg' />}
+                        {`${searchTerm}`} Collection Log
+                    </h2>
+                    <p>Total Uniques Obtained: {collectionLog.uniques}</p>
+
                     <CollectionLogTabs
                     currentTab={currentTab}
                     setCurrentTab={setCurrentTab}
                     setCurrentEntry={setCurrentEntry}
                     collectionLog={collectionLog} />
+
                     <div className="collection-log-tab-content">
                         <CollectionLogEntryList
                         collectionLog={collectionLog}

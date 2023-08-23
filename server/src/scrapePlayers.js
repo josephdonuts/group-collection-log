@@ -9,13 +9,17 @@ const scrapePlayers = async (groupName) => {
         const $ = cheerio.load(data);
         const table = $('table').eq(0).find('tbody').find('tr').find('td').find('a');
         const players = [];
+        const isPrestiged = $('.uc-scroll h3').find('img').attr('src') !== undefined;
         table.each((index, element) => {
             players.push($(element).text().trim());
         })
         for (let i = 0; i < players.length; i++) {
             players[i] = formatName(players[i]);
         }
-        return players;
+        return { 
+            isPrestiged: isPrestiged,
+            players: players
+        };
     } catch (error) {
         console.error(error)
         return error;
