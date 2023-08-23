@@ -15,11 +15,11 @@ const GroupSearch = (props) => {
             <h2>Group Search</h2>
             <form>
                 <label style={{color: "white"}} htmlFor="group-type" >Hardcore status: 
-                <div class="switch-field">
+                <div className="switch-field">
                     <input type="radio" id="radio-one" name="switch-one" value={true} />
-                    <label style={{color: "white"}} for="radio-one">Yes</label>
-                    <input type="radio" id="radio-two" name="switch-one" value={false} checked />
-                    <label style={{color: "white"}} for="radio-two">No</label>
+                    <label style={{color: "white"}} htmlFor="radio-one">Yes</label>
+                    <input type="radio" id="radio-two" name="switch-one" value={false} />
+                    <label style={{color: "white"}} htmlFor="radio-two">No</label>
 	            </div>
                 </label>
                 <label htmlFor="group-search"></label>

@@ -11,9 +11,8 @@ groupSearchRouter.get("/:groupName", async (req, res) => {
     try {
         const scrapeData = await scrapePlayers(req.params.groupName);
         for (const player in scrapeData.players) {
-            console.log(player)
             try {
-                const response = await axios.get(`${baseURL}${player}`)
+                const response = await axios.get(`${baseURL}${scrapeData.players[player]}`)
                     if (response.status === 200) {
                         logs.push(response.data);
                     }
