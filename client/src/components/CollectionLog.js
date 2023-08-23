@@ -15,6 +15,7 @@ const getGroup = async () => {
     const response = await fetch(`/api/v1/group/${searchTerm}`)
     const responseData = await response.json()
         console.log(responseData)
+        console.log(responseData.uniqueItems)
     setCollectionLog(responseData.groupedLog.collectionLog.tabs)
 }
 useEffect(() => {
