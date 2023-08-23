@@ -63,15 +63,20 @@ class LogCombiner {
         }
         return result;
     };
+
+    //TO-DO: MAKE SURE ITEMS AREN'T COUNTED MORE THAN ONCE
     static countUniqueItems(groupedLog) {
         let count = 0;
-
+        let visited = [];
         // Recursive helper function to handle arrays of objects
         const traverseObject = (obj) => {
             for (let key in obj) {
                 if (obj.hasOwnProperty(key)) {
                     if (key === "obtained" && obj[key] === true) {
-                        count++;
+                        if (!visited.includes(obj.id)) {
+                            count++;
+                            visited.push(obj.id);
+                        }
                     } else if (Array.isArray(obj[key])) {
                         obj[key].forEach((item) => {
                             traverseObject(item);
