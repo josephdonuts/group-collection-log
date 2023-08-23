@@ -13,14 +13,14 @@ groupSearchRouter.get("/:groupName", async (req, res) => {
         for (const player in scrapeData.players) {
             try {
                 const response = await axios.get(`${baseURL}${scrapeData.players[player]}`)
-                    if (response.status === 200) {
-                        logs.push(response.data);
-                    }
-                } catch (error) {
-                    if (!axios.isAxiosError(error)) //let axios blow up haha
-                        throw error
+                if (response.status === 200) {
+                    logs.push(response.data);
                 }
-        }  
+            } catch (error) {
+                if (!axios.isAxiosError(error)) //let axios blow up haha
+                    throw error
+            }
+        }
         const logCombiner = new LogCombiner(logs);
         logCombiner.combine();
         logCombiner.prestige = scrapeData.isPrestiged;

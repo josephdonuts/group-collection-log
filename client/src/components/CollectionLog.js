@@ -25,21 +25,23 @@ const getGroup = async () => {
 useEffect(() => {
     getGroup()
 }, [])
-    const prestigeIcon = <img src="https://www.runescape.com/img/rsp777/grand_exchange_icons/other/other_prestige.png" alt="prestige icon" />
+
     if (Object.keys(collectionLog).length > 0) {
         return (
             <div className="collection-log-container">
                 <div className="collection-log-menu">
                     <h2>
-                    {`${collectionLog.prestige ? prestigeIcon : ''}` } 
-                    {`${searchTerm}`} Collection Log
+                        {collectionLog.prestige && <img className='prestige-icon' src='https://www.runescape.com/img/rsp777/hiscores/prestige_icon.svg' />}
+                        {`${searchTerm}`} Collection Log
                     </h2>
                     <p>Total Uniques Obtained: {collectionLog.uniques}</p>
+
                     <CollectionLogTabs
                     currentTab={currentTab}
                     setCurrentTab={setCurrentTab}
                     setCurrentEntry={setCurrentEntry}
                     collectionLog={collectionLog} />
+
                     <div className="collection-log-tab-content">
                         <CollectionLogEntryList
                         collectionLog={collectionLog}
