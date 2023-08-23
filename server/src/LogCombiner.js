@@ -1,4 +1,3 @@
-import log from "./LOGTEMPLATE.js";
 
 class LogCombiner {
     constructor(logs = []) {
