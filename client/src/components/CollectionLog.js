@@ -14,9 +14,13 @@ const searchTerm = props.match.params.groupName
 const getGroup = async () => {
     const response = await fetch(`/api/v1/group/${searchTerm}`)
     const responseData = await response.json()
-        console.log(responseData)
-    setCollectionLog(responseData.groupedLog.collectionLog.tabs)
+        console.log(responseData)           // CONSOLE LOG CONSOLE LOG CONSOLE LOG CONSOLE LOG CONSOLE LOG CONSOLE LOG
+    setCollectionLog({
+        ...responseData.groupedLog.collectionLog.tabs,
+        uniques: responseData.uniqueItems
+    })
 }
+
 useEffect(() => {
     getGroup()
 }, [])
@@ -26,6 +30,7 @@ useEffect(() => {
             <div className="collection-log-container">
                 <div className="collection-log-menu">
                     <h2>{`${searchTerm}`} Collection Log</h2>
+                    <p>Total Uniques Obtained: {collectionLog.uniques}</p>
                     <CollectionLogTabs
                     currentTab={currentTab}
                     setCurrentTab={setCurrentTab}

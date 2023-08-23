@@ -3,6 +3,7 @@ class LogCombiner {
         this.logs = logs;
         this.groupedLog = {};
         this.uniqueItems = 0;
+        this.prestige = false;
     }
 
     combine() {
@@ -64,7 +65,6 @@ class LogCombiner {
         return result;
     };
 
-    //TO-DO: MAKE SURE ITEMS AREN'T COUNTED MORE THAN ONCE
     static countUniqueItems(groupedLog) {
         let count = 0;
         let visited = [];

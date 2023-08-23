@@ -17,9 +17,9 @@ const GroupSearch = (props) => {
                 <label style={{color: "white"}} htmlFor="group-type" >Hardcore status: 
                 <div class="switch-field">
                     <input type="radio" id="radio-one" name="switch-one" value={true} />
-                    <label for="radio-one">Yes</label>
+                    <label style={{color: "white"}} for="radio-one">Yes</label>
                     <input type="radio" id="radio-two" name="switch-one" value={false} checked />
-                    <label for="radio-two">No</label>
+                    <label style={{color: "white"}} for="radio-two">No</label>
 	            </div>
                 </label>
                 <label htmlFor="group-search"></label>

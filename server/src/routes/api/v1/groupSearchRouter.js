@@ -9,8 +9,8 @@ const baseURL = "https://api.collectionlog.net/collectionlog/user/"
 groupSearchRouter.get("/:groupName", async (req, res) => {
     const logs = [];
     try {
-        const players = await scrapePlayers(req.params.groupName);
-        for (const player of players) {
+        const scrapeData = await scrapePlayers(req.params.groupName);
+        for (const player in scrapeData.players) {
             console.log(player)
             try {
                 const response = await axios.get(`${baseURL}${player}`)
@@ -24,6 +24,7 @@ groupSearchRouter.get("/:groupName", async (req, res) => {
         }  
         const logCombiner = new LogCombiner(logs);
         logCombiner.combine();
+        logCombiner.prestige = scrapeData.isPrestiged;
         res.status(200).json(logCombiner);
     } catch (error) {
         console.error(error);
