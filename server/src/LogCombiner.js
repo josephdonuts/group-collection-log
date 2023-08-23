@@ -6,11 +6,11 @@ class LogCombiner {
     }
 
     combine() {
-        const visitedItems = []; // Initialize the array to keep track of visited items
-        this.groupedLog = LogCombiner.sumObjectsArray(this.logs, visitedItems);
+        this.groupedLog = LogCombiner.sumObjectsArray(this.logs);
+        //this.uniqueItems = LogCombiner.countUniqueItems(this.groupedLog);
     }
 
-    static sumObjects = (obj1, obj2, visitedItems) => {
+    static sumObjects = (obj1, obj2) => {
         for (let key in obj2) {
             if (obj2.hasOwnProperty(key)) {
                 if (Array.isArray(obj2[key])) {
@@ -22,12 +22,15 @@ class LogCombiner {
                                 if (!obj1[key][i]) {
                                     obj1[key][i] = {};
                                 }
-                                LogCombiner.sumObjects(obj1[key][i], obj2[key][i], visitedItems);
+                                LogCombiner.sumObjects(obj1[key][i], obj2[key][i]);
                             }
                         }
                     }
-                } else if (typeof obj2[key] === 'number') {
-                    if (!obj2[key] === 'id') {
+                } 
+                // ^^^ don't change arrays to objects ^^^
+                //else if its not an array...
+                else if (typeof obj2[key] === 'number') {
+                    if (!(key === 'id' || key === 'uniqueObtained' || key === 'uniqueItems')) { //dont sum these
                         if (!obj1[key]) {
                             obj1[key] = 0;
                         }
@@ -37,7 +40,7 @@ class LogCombiner {
                     if (!obj1[key]) {
                         obj1[key] = {};
                     }
-                    LogCombiner.sumObjects(obj1[key], obj2[key], visitedItems);
+                    LogCombiner.sumObjects(obj1[key], obj2[key]);
                 } else {
                     if (!obj1[key]) {
                         obj1[key] = obj2[key];
@@ -47,12 +50,25 @@ class LogCombiner {
         }
     }
 
-    static sumObjectsArray = (objectsArray, visitedItems) => {
+    static sumObjectsArray = (objectsArray) => {
         let result = {};
         for (let obj of objectsArray) {
-            LogCombiner.sumObjects(result, obj, visitedItems);
+            LogCombiner.sumObjects(result, obj);
         }
         return result;
+    }
+
+    static countUniqueItems = (groupedLog) => {
+        let uniqueItems = 0;
+        for (let key in groupedLog) {
+            if (groupedLog.hasOwnProperty(key)) {
+                if (typeof groupedLog[key] === 'object' && groupedLog[key] !== null) {
+                    uniqueItems += LogCombiner.countUniqueItems(groupedLog[key]);
+                } else if (key === 'obtained' && groupedLog[key] === true) {
+                    uniqueItems++;
+                }
+            }
+        }
     }
 }
 

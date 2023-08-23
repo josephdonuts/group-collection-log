@@ -8,14 +8,13 @@ const CollectionLog = (props) => {
 const [collectionLog, setCollectionLog] = useState({});
 const [currentTab, setCurrentTab] = useState("Bosses");
 const [currentEntry, setCurrentEntry] = useState("Abyssal Sire");
-console.log(currentEntry)
+
 const searchTerm = props.match.params.groupName
 
 const getGroup = async () => {
     const response = await fetch(`/api/v1/group/${searchTerm}`)
     const responseData = await response.json()
         console.log(responseData)
-        console.log(responseData.uniqueItems)
     setCollectionLog(responseData.groupedLog.collectionLog.tabs)
 }
 useEffect(() => {
