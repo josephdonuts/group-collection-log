@@ -8,9 +8,9 @@
 exports.up = async (knex) => {
     return knex.schema.createTable("hiscores", (table) => {
         table.bigIncrements("id").primary()
-        table.string("groupName").notNullable()
+        table.string("groupName").notNullable().unique()
         table.integer("uniques").notNullable()
-        table.integer("prestige").notNullable()
+        table.boolean("prestige").notNullable()
         table.timestamp("createdAt").notNullable().defaultTo(knex.fn.now())
         table.timestamp("updatedAt").notNullable().defaultTo(knex.fn.now())
     })

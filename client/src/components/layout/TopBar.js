@@ -27,6 +27,9 @@ const TopBar = ({ user }) => {
           <li>
             <Link to="/">Home</Link>
           </li>
+          <li>
+            <Link to="/hiscores">Hiscores</Link>
+          </li>
           {user && (
           <li>
             <Link to={`/group/log/${user.groupName}`}>{`${user.groupName}`}</Link>

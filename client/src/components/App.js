@@ -9,6 +9,7 @@ import SignInForm from "./authentication/SignInForm";
 import TopBar from "./layout/TopBar";
 import HomePage from "./HomePage";
 import CollectionLog from "./CollectionLog";
+import Hiscores from "./Hiscores";
 
 const App = (props) => {
   const [currentUser, setCurrentUser] = useState(undefined);
@@ -34,6 +35,7 @@ const App = (props) => {
             <HomePage />
           </Route>
           <Route exact path="/group/log/:groupName" component={CollectionLog} />
+          <Route exact path="/hiscores" component={Hiscores} />
           <Route exact path="/users/new" component={RegistrationForm} />
           <Route exact path="/user-sessions/new" component={SignInForm} />
         </Switch>

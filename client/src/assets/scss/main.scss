@@ -159,3 +159,51 @@
   width:100%;
   text-align: right;
 }
+.hiscores-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  min-width: 780px;
+  max-width: 780px;
+  margin: 0 auto;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  border: white 1px solid;
+  border-radius: 5px;
+  text-align: center;
+}
+.hiscores-entry {
+  margin-left: 40px;
+  color: white;
+  font-size: 1.5rem;
+  margin-top: 10px;
+  text-align: left;
+}
+.hiscores-span-0 {
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  .uniques-number {
+    text-align: right;
+    margin-right: 10px;
+  }
+  a {
+    color: white;
+  }
+  a:hover {
+    color: gold;
+  }
+}
+.hiscores-span-1 {
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  background: rgba($color: #584618, $alpha: 0.5);
+  .uniques-number {
+    text-align: right;
+    margin-right: 10px;
+  }
+  a {
+    color: white;
+  }
+  a:hover {
+    color: gold;
+  }
+}
