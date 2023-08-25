@@ -27,6 +27,11 @@ const TopBar = ({ user }) => {
           <li>
             <Link to="/">Home</Link>
           </li>
+          {user && (
+          <li>
+            <Link to={`/group/log/${user.groupName}`}>{`${user.groupName}`}</Link>
+          </li>
+          )}
         </ul>
       </div>
       <div className="top-bar-right">
