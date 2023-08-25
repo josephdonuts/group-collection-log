@@ -7,6 +7,7 @@ const RegistrationForm = () => {
     email: "",
     password: "",
     passwordConfirmation: "",
+    groupName: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -120,6 +121,18 @@ const RegistrationForm = () => {
             <FormError error={errors.passwordConfirmation} />
           </label>
         </div>
+        <div>
+          <label>
+            Group Name <br />
+            <input
+              type="groupName"
+              name="groupName"
+              value={userPayload.groupName}
+              onChange={onInputChange}
+            />
+          </label>
+        </div>
+        <br />
         <div>
           <input type="submit" className="button" value="Register" />
         </div>

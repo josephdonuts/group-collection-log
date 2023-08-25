@@ -14,12 +14,15 @@ const searchTerm = props.match.params.groupName
 const getGroup = async () => {
     const response = await fetch(`/api/v1/group/${searchTerm}`)
     const responseData = await response.json()
-        console.log(responseData)           // CONSOLE LOG CONSOLE LOG CONSOLE LOG CONSOLE LOG CONSOLE LOG CONSOLE LOG
-    setCollectionLog({
-        ...responseData.groupedLog.collectionLog.tabs,
-        uniques: responseData.uniqueItems,
-        prestige: responseData.prestige
-    })
+        console.log(responseData)  
+    if (responseData.groupedLog) {
+        setCollectionLog({
+            ...responseData.groupedLog.collectionLog.tabs,
+            uniques: responseData.uniqueItems,
+            prestige: responseData.prestige,
+            groupExists: responseData.groupExists,
+        })
+    }
 }
 
 useEffect(() => {
@@ -56,8 +59,7 @@ useEffect(() => {
                 </div>
             </div>
         )
-    }
-    else {
+    } else {
         return (
             <div className="collection-log-container">
                 loading collection log...
