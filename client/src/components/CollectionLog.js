@@ -8,6 +8,7 @@ const CollectionLog = (props) => {
 const [collectionLog, setCollectionLog] = useState({});
 const [currentTab, setCurrentTab] = useState("Bosses");
 const [currentEntry, setCurrentEntry] = useState("Abyssal Sire");
+const [loading, setLoading] = useState(true);
 
 const searchTerm = props.match.params.groupName
 
@@ -15,21 +16,29 @@ const getGroup = async () => {
     const response = await fetch(`/api/v1/group/${searchTerm}`)
     const responseData = await response.json()
         console.log(responseData)  
-    if (responseData.groupedLog) {
+    if (Object.keys(responseData.groupedLog).length > 0) {
         setCollectionLog({
             ...responseData.groupedLog.collectionLog.tabs,
             uniques: responseData.uniqueItems,
             prestige: responseData.prestige,
             groupExists: responseData.groupExists,
         })
+        setLoading(false)
     }
+    setLoading(false)
 }
 
 useEffect(() => {
     getGroup()
 }, [])
 
-    if (Object.keys(collectionLog).length > 0) {
+    if (loading) {
+        return (
+            <div className="collection-log-container">
+                loading collection log...
+            </div>
+        )
+    } else if (!loading && collectionLog.groupExists) {
         return (
             <div className="collection-log-container">
                 <div className="collection-log-menu">
@@ -62,7 +71,7 @@ useEffect(() => {
     } else {
         return (
             <div className="collection-log-container">
-                loading collection log...
+                Group not found.
             </div>
         )
     }

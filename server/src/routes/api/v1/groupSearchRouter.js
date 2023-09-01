@@ -37,6 +37,11 @@ groupSearchRouter.get("/:groupName", async (req, res) => {
                     uniques: logCombiner.uniqueItems,
                     prestige: logCombiner.prestige,
                 })
+            } else if (logCombiner.groupExists && (await Hiscore.query().findOne({ groupName: req.params.groupName }))) {
+                await Hiscore.query().update({
+                    uniques: logCombiner.uniqueItems,
+                    prestige: logCombiner.prestige,
+                }).where({ groupName: req.params.groupName })
             }
         } catch (error) {
             console.error(error);
