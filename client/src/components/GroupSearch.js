@@ -4,8 +4,6 @@ import { Link } from "react-router-dom";
 const GroupSearch = (props) => {
 
     const [searchData, setSearchData] = useState({});
-    console.log(searchData)
-    console.log(searchData)
     const handleChange = (event) => {
         setSearchData({
             ...searchData,
