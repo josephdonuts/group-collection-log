@@ -3,7 +3,7 @@ import React, {useEffect, useState} from "react";
 const Hiscores = (props) => {
 
     const [hiscores, setHiscores] = useState({})
-    console.log(hiscores)
+    
     const getHiscores = async () => {
         const response = await fetch(`/api/v1/hiscores`)
         const { hiscores } = await response.json()

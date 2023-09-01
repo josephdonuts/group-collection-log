@@ -32,7 +32,7 @@ groupSearchRouter.get("/:groupName", async (req, res) => {
         //not ideal # of queries but it works
         try {
             if (logCombiner.groupExists && !(await Hiscore.query().findOne({ groupName: req.params.groupName }))) {
-                await Hiscore.query().insert({
+                await Hiscore.query().insert({ //violating unique ID constraint
                     groupName: req.params.groupName,
                     uniques: logCombiner.uniqueItems,
                     prestige: logCombiner.prestige,
@@ -40,7 +40,6 @@ groupSearchRouter.get("/:groupName", async (req, res) => {
             } else if (logCombiner.groupExists && (await Hiscore.query().findOne({ groupName: req.params.groupName }))) {
                 await Hiscore.query().update({
                     uniques: logCombiner.uniqueItems,
-                    prestige: logCombiner.prestige,
                 }).where({ groupName: req.params.groupName })
             }
         } catch (error) {
