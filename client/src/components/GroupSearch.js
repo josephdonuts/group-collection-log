@@ -1,35 +1,41 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
-import CollectionLog from "./CollectionLog";
 
 const GroupSearch = (props) => {
 
-    const [searchTerm, setSearchTerm] = useState("");
-
+    const [searchData, setSearchData] = useState({});
+    console.log(searchData)
+    console.log(searchData)
     const handleChange = (event) => {
-        setSearchTerm(event.target.value);
+        setSearchData({
+            ...searchData,
+            [event.target.name]: (event.target.value).toLowerCase()
+        });
     }
+    useEffect(() => {
+    }, [])
 
     return (
         <div className="group-search-container">
-            <h2>Group Search</h2>
+            <h3>Group Search</h3>
             <form>
                 <label style={{color: "white"}} htmlFor="group-type" >Hardcore status: 
                 <div className="switch-field">
-                    <input type="radio" id="radio-one" name="switch-one" value={true} />
+                    <input type="radio" id="radio-one" name="isHardcore" value={true} onChange={handleChange} />
                     <label style={{color: "white"}} htmlFor="radio-one">Yes</label>
-                    <input type="radio" id="radio-two" name="switch-one" value={false} />
+                    <input type="radio" id="radio-two" name="isHardcore" value={false} onChange={handleChange} defaultChecked />
                     <label style={{color: "white"}} htmlFor="radio-two">No</label>
 	            </div>
                 </label>
-                <label htmlFor="group-search"></label>
+                <label htmlFor="searchTerm"></label>
                 <input  placeholder="Enter group name..."
                         type="text"
-                        id="group-search"
-                        name="group-search"
+                        className="search-term"
+                        id="searchTerm"
+                        name="searchTerm"
                         onChange={handleChange} />
-                <Link to={`/group/log/${searchTerm}`}>
-                    <p>Search</p>
+                <Link to={`/group/log/${searchData.searchTerm}`} >
+                    <p className="search-button">Search</p>
                 </Link>
             </form>
             {/* {searchTile} ??? */}

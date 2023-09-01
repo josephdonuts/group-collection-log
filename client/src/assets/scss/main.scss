@@ -37,17 +37,39 @@
   max-width: 815px;
   margin-top: 40px;
   margin: 0 auto;
+  h1 {
+    font-size: 3rem;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 40px;
+  }
 }
-.home-page-container h1 {
-  font-size: 3rem;
-  text-align: center;
-  margin-top: 20px;
-  margin-bottom: 40px;
-}
-.group-search-container form {
-  width: 60%;
-  margin: 0 auto;
-  margin-bottom: 40px;
+
+.group-search-container {
+  display:block;
+  form {
+    width: 60%;
+    margin: 0 auto;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .search-term {
+    font-size: 1rem;
+    color: white;
+    background-color: #1e1e1e;
+    border: white 1px solid;
+    border-radius: 5px;
+    padding: 5px;
+    width: 100%;
+  }
+  input:focus {
+    outline: none;
+  }
+  a {
+    text-align: center;
+  }
 }
 .grid-container label {
   font-size: 1.5rem;
@@ -206,4 +228,17 @@
   a:hover {
     color: gold;
   }
+}
+.search-button {
+  justify-content: center;
+  background-color: #1e1e1e;
+  color: goldenrod;
+  border: white 1px solid;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  margin-left: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 5px;
+  width: 100px;
 }
